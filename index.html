@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Taller | Lección 3</title>
+  </head>
+  <body>
+    <form>
+      <select id="pais" name="pais" >
+        <option value="" selected>Seleccione País...</option>
+        <option value="AR">Argentina</option>
+        <option value="BR">Brasil</option>
+        <option value="CO">Colombia</option>
+      </select>
+      <button type="button" id="visitar" >Visitar</button><br>
+      <div class="">
+        <p>El último país visitado es:  <strong id="resultado"> </strong> </p>
+      </div>
+    </form>
+    <script type="text/javascript">
+      //Código
+      const boton = document.getElementById('visitar');
+      const pais = document.getElementById('pais');
+      boton.addEventListener("click", () =>{
+        let selected = pais.options[pais.selectedIndex].text;
+        localStorage.setItem('pais', selected); // para guardar
+        let res = localStorage.getItem('pais'); // para recuperar
+        console.log(`El país seleccionado es ${res}`);
+      })
+      document.addEventListener("DOMContentLoaded", () => {
+        // alert("Cargado!")
+        document.getElementById('resultado').innerHTML = localStorage.getItem('pais'); //para recuperar
+      })
+    </script>
+  </body>
+</html>
